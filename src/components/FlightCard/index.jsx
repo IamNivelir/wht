@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 
+import StateContext from "../../lib/StateContext";
 import { Card, VerticalDivider, Label } from "./styles";
 
 const FlightCard = ({ data }) => {
@@ -16,6 +17,11 @@ const FlightCard = ({ data }) => {
     sourcePortName,
     flightProvider,
   } = data;
+  const { dispatch } = useContext(StateContext);
+
+  const openModal = () => {
+    dispatch({ type: "open", id: id });
+  };
 
   return (
     <Card>
@@ -53,7 +59,7 @@ const FlightCard = ({ data }) => {
               <Typography variant="body1">Terminal 1</Typography>
             </Grid>
             <Grid item xs={5}>
-              <Button color="primary" onClick={() => {}}>
+              <Button color="primary" onClick={openModal}>
                 More details <ArrowForwardIcon />
               </Button>
             </Grid>

@@ -4,6 +4,7 @@ import "fontsource-roboto";
 import { getInitialState, reducer } from "./reducer";
 import StateContext from "./lib/StateContext";
 import ArrivalFlightList from "./pages/ArrivalFlightList";
+import GlobalModal from "./components/Modal";
 import GlobalStyle from "./styles";
 
 const App = () => {
@@ -16,6 +17,7 @@ const App = () => {
       <GlobalStyle />
       <StateContext.Provider value={{ state, dispatch }}>
         <ArrivalFlightList />
+        <GlobalModal />
       </StateContext.Provider>
     </div>
   );
