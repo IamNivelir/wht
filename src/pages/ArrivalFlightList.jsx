@@ -1,4 +1,6 @@
 import React, { useContext } from "react";
+import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
 
 import StateContext from "../lib/StateContext";
 import FlightCard from "../components/FlightCard";
@@ -20,10 +22,14 @@ const ArrivalFlightList = () => {
   const flightList = getFlightList();
 
   return (
-    <div>
-      <h3>List Of Arrivals</h3>
+    <>
+      <Grid container direction="row" justify="center" alignItems="center">
+        <Typography variant="h4" style={{ marginBottom: "40px" }}>
+          List Of Arrivals
+        </Typography>
+      </Grid>
       <div>{flightList}</div>
-    </div>
+    </>
   );
 };
 
