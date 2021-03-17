@@ -4,11 +4,14 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 import StateContext from "../../lib/StateContext";
 import { Card, VerticalDivider, Label } from "./styles";
 
 const FlightCard = ({ data }) => {
+  const { dispatch } = useContext(StateContext);
+
   const {
     id,
     status,
@@ -17,14 +20,17 @@ const FlightCard = ({ data }) => {
     sourcePortName,
     flightProvider,
   } = data;
-  const { dispatch } = useContext(StateContext);
 
   const openModal = () => {
     dispatch({ type: "open", id: id });
   };
 
+  const deleteCard = () => {
+    dispatch({ type: "remove", id: id });
+  };
+
   return (
-    <Card>
+    <Card key={id}>
       <Paper elevation={3}>
         <Grid container className="main-grid-wrapper">
           <Grid item xs>
@@ -55,12 +61,17 @@ const FlightCard = ({ data }) => {
           </Grid>
           <VerticalDivider orientation="vertical" flexItem />
           <Grid item container xs={5} justify="space-between">
-            <Grid item xs={7}>
+            <Grid item xs>
               <Typography variant="body1">Terminal 1</Typography>
             </Grid>
-            <Grid item xs={5}>
+            <Grid item xs>
               <Button color="primary" onClick={openModal}>
                 More details <ArrowForwardIcon />
+              </Button>
+            </Grid>
+            <Grid item xs={2}>
+              <Button color="primary" onClick={deleteCard}>
+                <DeleteIcon />
               </Button>
             </Grid>
           </Grid>

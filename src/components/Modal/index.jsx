@@ -30,7 +30,6 @@ const GlobalModal = () => {
 
   const getBody = () => {
     const selectedFlight = flights.find(({ id }) => id === openModal);
-    console.log(selectedFlight);
 
     if (!showModal && !selectedFlight) {
       return <div></div>;
