@@ -17,7 +17,7 @@ export const reducer = (state, action) => {
     case "edit": {
       const idx = state.flights.findIndex((f) => f.id === action.id);
       const newFlights = [...state.flights];
-      newFlights[idx][status] = action.status;
+      newFlights[idx].status = action.status;
 
       return { ...state, flights: [...newFlights] };
     }
