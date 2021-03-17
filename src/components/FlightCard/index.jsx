@@ -65,12 +65,15 @@ const FlightCard = ({ data }) => {
               <Typography variant="body1">Terminal 1</Typography>
             </Grid>
             <Grid item xs>
-              <Button color="primary" onClick={openModal}>
+              <Button
+                style={{ color: "green", textTransform: "initial" }}
+                onClick={openModal}
+              >
                 More details <ArrowForwardIcon />
               </Button>
             </Grid>
             <Grid item xs={2}>
-              <Button color="primary" onClick={deleteCard}>
+              <Button style={{ color: "red" }} onClick={deleteCard}>
                 <DeleteIcon />
               </Button>
             </Grid>
