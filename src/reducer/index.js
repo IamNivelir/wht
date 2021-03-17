@@ -1,9 +1,10 @@
-export const initialState = {
-  flights: [],
-};
+import { flightDummyDataGenerator } from "../lib/flightDummyDataGenerator";
 
-export const getInitialState = () => {
-  return initialState;
+export const getInitialState = (numberOfFlights) => {
+  const flightList = flightDummyDataGenerator(numberOfFlights);
+  return {
+    flights: flightList,
+  };
 };
 
 export const reducer = (state, action) => {
