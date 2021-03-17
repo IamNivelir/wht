@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useMemo } from "react";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 
@@ -19,7 +19,9 @@ const ArrivalFlightList = () => {
         <FlightCard data={flightData} key={flightData.id} />
       ));
   };
-  const flightList = getFlightList();
+  const flightList = useMemo(() => {
+    return getFlightList();
+  }, [flights]);
 
   return (
     <>
