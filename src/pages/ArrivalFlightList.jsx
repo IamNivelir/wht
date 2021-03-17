@@ -11,6 +11,7 @@ const ArrivalFlightList = () => {
   } = useContext(StateContext);
 
   const getFlightList = () => {
+    if (flights.length == 0) return <span>No items to show</span>;
     return flights
       .sort((a, b) => {
         return new Date(a.scheduledArrival) - new Date(b.scheduledArrival);
